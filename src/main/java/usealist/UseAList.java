@@ -7,6 +7,20 @@ import java.util.List;
 
 public class UseAList {
 
+  // creates an array of List ... literally List[]
+  // arrays know their runtime type, but cannot know
+  // the E of List...
+  public static void pollute(List<String> ... several) {}
+  // This must be array of Object, it's NOT an array of whatever E was
+  public static <E> void pollute(E ... several) {}
+
+  // when CALLING this, compiler must validate we pass a List<String>
+  // so this <String> IS passed into the classfile
+  // BUT at runtime, there are not "List<String>" there are only List
+//  public static void showList(List<String> ls) {}
+  // BUT generic type params DO NOT differentiate attempts at overload
+//  public static void showList(List<LocalDate> ls) {}
+
   public static void breakAList(List l) {
     l.add(1, LocalDate.now());
   }
@@ -41,5 +55,13 @@ public class UseAList {
 //    System.out.println(obj.getClass());
 
 //    names = "Hello";
+
+//    List<int> li; // NOPE
+    List<int[]> lai; // Yes!
+    List<Integer> li; // Yes!
+
+    Object obj = new ArrayList<String>();
+//    if (obj instanceof List<String>) {}
+    if (obj instanceof List) {}
   }
 }
