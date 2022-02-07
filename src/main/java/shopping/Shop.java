@@ -10,5 +10,10 @@ public class Shop {
         new ShoppingPair<>(new Sock(10, "Red"), new Sock(10, "Green"));
 
     System.out.println("pair matches? " + ps2.matched());
+
+    System.out.println("Proposal is good? " +
+//        ShoppingPair.matches(new Sock(10, "Red"), new Sock(10, "Green")));
+        ShoppingPair.<Sock>matches(new Sock(10, "Red"), new Sock(10, "Green")));
+
   }
 }
